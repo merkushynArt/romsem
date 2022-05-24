@@ -122,6 +122,10 @@
    display: flex;
 }
 
+.content__header-sort:hover>.content__header-sort-line {
+   display: block;
+}
+
 .content__header-sort-list{
    position: absolute;
    background-color: white;
@@ -135,8 +139,13 @@
 }
 
 .content__header-sort-line{
+   width: 90%;
    border: 1px solid #A4ACAD;
    margin-bottom: 10px;
+   display: none;
+   position: absolute;
+   bottom: 0;
+   z-index: 3;
 }
 
 .content__header-sort-item{
@@ -166,7 +175,6 @@
 
 .content__header-sort-default{
    font-family: DIN Pro,sans-serif;
-
    font-style: normal;
    font-weight: normal;
    font-size: 18px;
