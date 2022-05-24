@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import RouteContent from './RouteContent/RouteContent';
+import Logo from '../../../../assets/icons/salad.svg';
 
 function Salad() {
-  return (
-    <div>Salad</div>
-  )
+   return (
+      <RouteContent Logo={Logo} title={'Салаты'} path="salad"/>
+   )
 }
 
 export default Salad

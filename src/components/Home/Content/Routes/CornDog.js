@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import RouteContent from './RouteContent/RouteContent';
+import Logo from '../../../../assets/icons/corndog.svg';
+
 
 function CornDog() {
-  return (
-    <div>CornDog</div>
-  )
+   return (
+      <RouteContent Logo={Logo} title={'Корн-доги'} path='corndog' />
+   )
 }
 
 export default CornDog

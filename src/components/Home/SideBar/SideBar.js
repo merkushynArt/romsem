@@ -11,6 +11,7 @@ import Soup from '../../../assets/icons/soup.svg'
 import Corndog from '../../../assets/icons/corndog.svg'
 import Drinks from '../../../assets/icons/drinks.svg'
 import Sale from '../../../assets/icons/sale.svg'
+import Soon from './Soon';
 
 
 function SideBar() {
@@ -64,24 +65,28 @@ function SideBar() {
                <NavLink className='home__sidebar-link' to="/soup">
                   Супы
                </NavLink>
+               <Soon/>
             </li>
             <li className='home__sidebar-list-item'>
                <img src={Corndog} alt="corndog"/>
                <NavLink className='home__sidebar-link' to="/corndog">
                   Корн доги
                </NavLink>
+               <Soon/>
             </li>
             <li className='home__sidebar-list-item'>
                <img src={Drinks} alt="drinks"/>
                <NavLink className='home__sidebar-link' to="/drinks">
                      Напитки
                </NavLink>
+               <Soon/>
             </li>
             <li className='home__sidebar-list-item'>
                <img src={Sale} alt="sale"/>
                <NavLink className='home__sidebar-link' to="/sale">
                   Акции
                </NavLink>
+               <Soon/>
             </li>
          </ul>
       </aside>

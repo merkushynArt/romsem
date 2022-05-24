@@ -113,11 +113,11 @@
 }
 
 .header__link:hover{
-    color: #FF9846;
+   color: #FF9846;
    transition: .3s;
 }
 .header__link.active{
-    color: #FF9846;
+   color: #FF9846;
 }
 
 

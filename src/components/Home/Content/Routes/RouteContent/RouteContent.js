@@ -33,7 +33,7 @@ function RouteContent({Logo, title, path}) {
                         <li className='content__card-size' key={size}>{size}</li>
                      ))}
                      </ul>
-                     : path === 'rolls' || path === 'wok' ?
+                     : path === 'rolls' || path === 'wok' || path === 'sushi' || path === 'salad' || path === 'soup' || path === 'corndog' ?
                      <p className='content__card-option'>
                         {item.ingredients.filter((item, idx) => idx < 3).join(', ')}
                      </p>
