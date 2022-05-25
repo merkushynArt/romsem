@@ -176,6 +176,7 @@
    height: 72px;
    border-radius: 50%;
    cursor: pointer;
+   object-fit:cover;
 }
 
 .header__search-list-title{

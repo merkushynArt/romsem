@@ -10,7 +10,7 @@ const Header = () => {
 
    const searchHandler = (text) => {
       if (text){
-         axios('https://romsem.herokuapp.com/api/all')
+         axios('http://localhost:8080/all')
             .then(({data})=> setAll(Object.values(data).reduce((acc, rec)=> {
                return [...acc, rec.filter((item) => item.title.toUpperCase().startsWith(text.toUpperCase()))]
             },[]).flat()))
@@ -72,7 +72,7 @@ const Header = () => {
                   </svg>
                </button>
                   <ul style={{display: `${search && all.length? 'flex': 'none'}`}} className='header__search-list'>
-                     {all.map((item,idx) => (
+                     {all.map((item, idx) => (
                         <li key={idx} className='header__search-list-item'>
                            <Link to={`/${item.categories}/product/${item.id}`} onClick={() => {
                               setSearch(false);
@@ -83,7 +83,7 @@ const Header = () => {
                            </Link>
                            <div className='header__search-list-info'>
                               <h2 className='header__search-list-title'>{item.title}</h2>
-                              <p className='header__search-list-price'>{item.price} сом</p>
+                              <p className='header__search-list-price'>{item.price} грн</p>
                            </div>
                         </li>
                      ))}
