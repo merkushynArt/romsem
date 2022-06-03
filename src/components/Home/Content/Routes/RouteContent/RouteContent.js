@@ -1,6 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import SortItem from '../SortItem/SortItem';
+import { Link } from 'react-router-dom';
+import Pizza from '../Pizza';
+import PizzaSize from './PizzaSize';
+import WantBuy from './WantBuy';
+import Price from './Price';
 
 function RouteContent({Logo, title, path}) {
    const [arr, setArr] = useState([]);
@@ -51,14 +56,12 @@ function RouteContent({Logo, title, path}) {
                }
             }).map((item) => (
                <div key={item.id} className='content__card'>
-                  <img className='content__card-img' src={item.imageUrl} alt="" />
+                  <Link to={`/${path}/product/${item.id}`}>
+                     <img className='content__card-img' src={item.imageUrl} alt="" />
+                  </Link>
                   <h4 className='content__card-title'>{item.title}</h4>
                   {path === 'pizza' ?
-                     <ul className='content__card-sizes'>
-                     {item.sizes.map((size) => (
-                        <li className='content__card-size' key={size}>{size}</li>
-                     ))}
-                     </ul>
+                     <PizzaSize sizes={item.sizes} />
                      : path === 'rolls' || path === 'wok' || path === 'sushi' || path === 'salad' || path === 'soup' || path === 'corndog' ?
                      <p className='content__card-option'>
                         {item.ingredients.filter((item, idx) => idx < 3).join(', ')}
@@ -70,8 +73,8 @@ function RouteContent({Logo, title, path}) {
                      : ''
                   }
                   <div className='content__card-bot'>
-                     <p className='content__card-price'>{item.price} грн</p>
-                     <button className='content__card-btn' type='button'>Хочу</button>
+                     <Price price={item.price}/>
+                     <WantBuy/>
                   </div>
                </div>
             ))}
@@ -81,5 +84,3 @@ function RouteContent({Logo, title, path}) {
 }
 
 export default RouteContent
-
-//.sort((a, b) => a.title >b.title ? 1 : -1)
