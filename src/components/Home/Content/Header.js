@@ -42,7 +42,7 @@ const Header = () => {
             </div>
             <div className='header__address'>
                <p className='header__address-title'>Город:</p>
-               <p className='header__address-city'>Бишкек</p>
+               <p className='header__address-city'>Киев</p>
             </div>
          </div>
          <div className='header__right'>
