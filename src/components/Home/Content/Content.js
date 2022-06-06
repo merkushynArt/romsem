@@ -16,6 +16,7 @@ import Product from './Product/Product';
 import Reviews from './Routes/Reviews/Reviews';
 import Express from './Routes/Express/Express';
 import Footer from './Footer/Footer';
+import ContentLayout from './ContentLayout/ContentLayout';
 
 
 function Content() {
@@ -25,17 +26,19 @@ function Content() {
             <Header/>
             <div className="container">
                <Routes>
-                  <Route path='/' element={<Main/>}/>
-                  <Route path='/pizza' element={<Pizza/>}/>
-                  <Route path='/sets' element={<Sets/>}/>
-                  <Route path='/wok' element={<Wok/>}/>
-                  <Route path='/rolls' element={<Rolls/>}/>
-                  <Route path='/sushi' element={<Sushi/>}/>
-                  <Route path='/salad' element={<Salad/>}/>
-                  <Route path='/soup' element={<Soup/>}/>
-                  <Route path='/corndog' element={<CornDog/>}/>
-                  <Route path='/drinks' element={<Drinks/>}/>
-                  <Route path='/sale' element={<Sale/>}/>
+                  <Route path='/' element={<ContentLayout/>}>
+                     <Route path='' element={<Main/>}/>
+                     <Route path='pizza' element={<Pizza/>}/>
+                     <Route path='sets' element={<Sets/>}/>
+                     <Route path='wok' element={<Wok/>}/>
+                     <Route path='rolls' element={<Rolls/>}/>
+                     <Route path='sushi' element={<Sushi/>}/>
+                     <Route path='salad' element={<Salad/>}/>
+                     <Route path='soup' element={<Soup/>}/>
+                     <Route path='corndog' element={<CornDog/>}/>
+                     <Route path='drinks' element={<Drinks/>}/>
+                     <Route path='sale' element={<Sale/>}/>
+                  </Route>
                   <Route path='/:path/product/:id' element={<Product/>}/>
                   <Route path='/reviews' element={<Reviews/>}/>
                   <Route path='/express' element={<Express/>}/>
