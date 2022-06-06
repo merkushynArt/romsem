@@ -24,7 +24,7 @@
 .header__phone::before{
    position: absolute;
    content: '';
-   height: 94.5px;
+   height: 77px;
    width: 1px;
    background-color: #A4ACAD;
    right: 0;

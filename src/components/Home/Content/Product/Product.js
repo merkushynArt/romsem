@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useContext, useEffect, useState} from 'react';
 import './product.css';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import PizzaSize from '../Routes/RouteContent/PizzaSize';
 import Price from '../Routes/RouteContent/Price';
 import WantBuy from '../Routes/RouteContent/WantBuy';
@@ -17,6 +17,7 @@ function Product() {
    const [rec, setRec] = useState([]);
    const {path, id} = useParams();
    const {minusOne, plusOne} = useContext(CustomContext);
+   const navigate = useNavigate();
 
    useEffect(() => {
       axios(`http://localhost:8080/${path}/${id}`)
@@ -24,7 +25,7 @@ function Product() {
 
       axios(`http://localhost:8080/${path}`)
          .then(({data}) => setRec(data.slice(0, 6)))
-   }, []);
+   }, [path, id]);
 
    return (
       <div className='product'>
@@ -33,7 +34,7 @@ function Product() {
                <circle cx="10" cy="10" r="10" fill="#FF9846"/>
                <path d="M11.75 5.75L7.25 10.25L11.75 14.75" stroke="#F2F2F2" />
             </svg>
-            <span className="product__link-text">Назад</span>
+            <span className="product__link-text" onClick={() => navigate(-1)}>Назад</span>
          </div>
          <div className="product__content">
             <img className='product__content-img' src={product.imageUrl} alt={product.title} />

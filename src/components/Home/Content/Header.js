@@ -24,8 +24,7 @@ const Header = () => {
          <div className='header__left'>
             <div className='header__phone'>
                <p className='header__phone-title'>Наш телефон</p>
-               <a className='header__phone-tel' href="tel:+996 705 188 955">+996 705 188 955</a>
-               <a className='header__phone-tel' href="tel:+996 555 188 955">+996 555 188 955</a>
+               <a className='header__phone-tel' href="tel:+996 705 188 955">+380 958 827 306</a>
                <p className='header__phone-time'>
                   <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path d="M7.49999 2.44565C7.67934 2.44565 7.82608 2.29891 7.82608 2.11956V1.95652C7.82608 1.77717 7.67934 1.63043 7.49999 1.63043C7.32064 1.63043 7.1739 1.77717 7.1739 1.95652V2.11956C7.1739 2.29891 7.32064 2.44565 7.49999 2.44565Z" fill="#FF9846"/>
