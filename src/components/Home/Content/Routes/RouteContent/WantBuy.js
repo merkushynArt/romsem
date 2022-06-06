@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CustomContext } from '../../../../../Context';
 
-const WantBuy = () => {
+const WantBuy = ({item}) => {
+   const {addItem} = useContext(CustomContext)
+
    return (
-      <button className='content__card-btn' type='button'>Хочу</button>
+      <button className='content__card-btn' type='button' onClick={() => addItem(item)} >Хочу</button>
    )
 }
 

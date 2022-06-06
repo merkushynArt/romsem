@@ -14,6 +14,7 @@ import Sale from './Routes/Sale';
 import Main from './Routes/Main/Main';
 import Product from './Product/Product';
 import Reviews from './Routes/Reviews/Reviews';
+import Express from './Routes/Express/Express';
 
 
 function Content() {
@@ -35,6 +36,7 @@ function Content() {
                <Route path='/sale' element={<Sale/>}/>
                <Route path='/:path/product/:id' element={<Product/>}/>
                <Route path='/reviews' element={<Reviews/>}/>
+               <Route path='/express' element={<Express/>}/>
             </Routes>
          </div>
       </section>

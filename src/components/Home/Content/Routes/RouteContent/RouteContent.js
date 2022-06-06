@@ -74,7 +74,7 @@ function RouteContent({Logo, title, path}) {
                   }
                   <div className='content__card-bot'>
                      <Price price={item.price}/>
-                     <WantBuy/>
+                     <WantBuy item={item}/>
                   </div>
                </div>
             ))}

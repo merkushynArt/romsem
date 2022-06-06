@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './product.css';
 import {useParams} from 'react-router-dom';
 import PizzaSize from '../Routes/RouteContent/PizzaSize';
@@ -9,12 +9,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from 'swiper';
 import "swiper/css/navigation"
 import 'swiper/css';
+import { CustomContext } from '../../../../Context';
 SwiperCore.use([Navigation]);
 
 function Product() {
    const [product, setProduct] = useState({});
    const [rec, setRec] = useState([]);
    const {path, id} = useParams();
+   const {minusOne, plusOne} = useContext(CustomContext);
 
    useEffect(() => {
       axios(`http://localhost:8080/${path}/${id}`)
@@ -40,13 +42,15 @@ function Product() {
                <PizzaSize sizes={product.sizes} />
                <div className="product__content-buy">
                   <Price price={product.price}/>
-                  <div className="product__content-line"></div>
+                  <div className="product__content-line" onClick={() => minusOne(product)} >
+
+                  </div>
                   <div className="product__content-pay">
                      <span className='product__content-pay-count'>10</span>
-                     <button className='product__content-pay-btn'>+</button>
+                     <button className='product__content-pay-btn' onClick={() => plusOne(product)} >+</button>
                   </div>
                </div>
-               <WantBuy/>
+               <WantBuy item={product} />
             </div>
          </div>
          <h3 className='product__rec'>Рекомендуем к этому товару</h3>
