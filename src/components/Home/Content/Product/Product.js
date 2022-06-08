@@ -1,22 +1,19 @@
 import axios from 'axios';
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import './product.css';
 import {useNavigate, useParams} from 'react-router-dom';
-import PizzaSize from '../Routes/RouteContent/PizzaSize';
 import Price from '../Routes/RouteContent/Price';
-import WantBuy from '../Routes/RouteContent/WantBuy';
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {Navigation} from 'swiper';
 import "swiper/css/navigation"
 import 'swiper/css';
-import { CustomContext } from '../../../../Context';
+import ProductContent from './ProductContent';
 SwiperCore.use([Navigation]);
 
 function Product() {
    const [product, setProduct] = useState({});
    const [rec, setRec] = useState([]);
    const {path, id} = useParams();
-   const {minusOne, plusOne} = useContext(CustomContext);
    const navigate = useNavigate();
 
    useEffect(() => {
@@ -36,24 +33,7 @@ function Product() {
             </svg>
             <span className="product__link-text" onClick={() => navigate(-1)}>Назад</span>
          </div>
-         <div className="product__content">
-            <img className='product__content-img' src={product.imageUrl} alt={product.title} />
-            <div className='product__content-info'>
-               <h2 className="product__content-title">{product.title}</h2>
-               <PizzaSize sizes={product.sizes} />
-               <div className="product__content-buy">
-                  <Price price={product.price}/>
-                  <div className="product__content-line" onClick={() => minusOne(product)} >
-
-                  </div>
-                  <div className="product__content-pay">
-                     <span className='product__content-pay-count'>10</span>
-                     <button className='product__content-pay-btn' onClick={() => plusOne(product)} >+</button>
-                  </div>
-               </div>
-               <WantBuy item={product} />
-            </div>
-         </div>
+         <ProductContent item={product}/>
          <h3 className='product__rec'>Рекомендуем к этому товару</h3>
          <div className='custom__swiper'>
             <Swiper
@@ -69,7 +49,7 @@ function Product() {
                modules={[Navigation]}
                className="mySwiper"
             >
-               {rec.map((item, idx) => (
+               {rec.map((item) => (
                   <SwiperSlide>
                      <div className='product__swiper-card'>
                         <img className='product__swiper-img' src={item.imageUrl} alt={item.title} />

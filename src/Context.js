@@ -59,7 +59,16 @@ export const Context = (props) => {
    };
 
    const minusOne = (item) => {
-      if (item.count > 1){
+
+      let idx = cart.findIndex((el) => {
+         if (item.categories === 'pizza'){
+            return el.title === item.title && el.size === item.size
+         } else {
+            return el.title === item.title
+         }
+      });
+      
+      if (cart[idx].count > 1){
          setCart(cart.map((el) => {
             if (el.categories === 'pizza') {
                if (item.title === el.title && el.size === item.size) {

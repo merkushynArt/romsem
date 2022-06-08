@@ -16,7 +16,7 @@ const Cart = () => {
                </div>
                <ul className='cart__list'>
                   {cart.map((item) => (
-                     <li className='cart__item' key={item.title}>
+                     <li className='cart__item' key={item.title + item.size}>
                         <img className='cart__item-img' src={item.imageUrl} alt={item.title} />
                         <div className="cart__item-info">
                            <h3 className="cart__item-title">{item.title}</h3>
@@ -26,7 +26,9 @@ const Cart = () => {
                                  {item.count}
                                  <span className="cart__item-plus" onClick={() => plusOne(item)}>+</span>
                               </div>
-                              <span className="cart__item-price">{item.price * item.count} грн</span>
+                              <span className='cart__item-price'>{  (item.categories === 'pizza' && item.size === 1 ? item.priceMiddle
+                                 : item.categories === 'pizza' && item.size === 2 ? item.priceLarge
+                                    : item.price) * item.count} грн</span>
                            </div>
                            <span className='cart__item-delete' onClick={() => deleteItem(item)}>✗</span>
                         </div>
@@ -34,9 +36,11 @@ const Cart = () => {
                   ))}
                </ul>
                <div className="cart__basket-bottom">
-                  <span className='cart__basket-price'>{cart.reduce((acc, rec) => {
-                     return acc + (rec.price * rec.count)
-                  }, 0)} грн</span>
+                  <span className="cart__basket-price">{cart.reduce((acc, rec)=>{
+                     return acc + ( (rec.categories === 'pizza' && rec.size === 1 ? rec.priceMiddle
+                        : rec.categories === 'pizza' && rec.size === 2 ? rec.priceLarge
+                           : rec.price) * rec.count)
+                  },0)} грн</span>
                   <button className='cart__basket-btn'>Оформить заказ</button>
                </div>
             </div>

@@ -1,15 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import SortItem from '../SortItem/SortItem';
-import { Link } from 'react-router-dom';
-import Pizza from '../Pizza';
-import PizzaSize from './PizzaSize';
-import WantBuy from './WantBuy';
-import Price from './Price';
+import Card from './Card/Card';
 
 function RouteContent({Logo, title, path}) {
    const [arr, setArr] = useState([]);
-
    const [sort, setSort] = useState('По умолчанию');
 
    useEffect(()=> {
@@ -55,28 +50,7 @@ function RouteContent({Logo, title, path}) {
                   return b.count - a.count
                }
             }).map((item) => (
-               <div key={item.id} className='content__card'>
-                  <Link to={`/${path}/product/${item.id}`}>
-                     <img className='content__card-img' src={item.imageUrl} alt="" />
-                  </Link>
-                  <h4 className='content__card-title'>{item.title}</h4>
-                  {path === 'pizza' ?
-                     <PizzaSize sizes={item.sizes} />
-                     : path === 'rolls' || path === 'wok' || path === 'sushi' || path === 'salad' || path === 'soup' || path === 'corndog' ?
-                     <p className='content__card-option'>
-                        {item.ingredients.filter((item, idx) => idx < 3).join(', ')}
-                     </p>
-                     : path === 'sets' ?
-                     <p className='content__card-option'>
-                        1000 грамм, {item.count} штук
-                     </p>
-                     : ''
-                  }
-                  <div className='content__card-bot'>
-                     <Price price={item.price}/>
-                     <WantBuy item={item}/>
-                  </div>
-               </div>
+               <Card item={item} path={path}/>
             ))}
          </div>
       </div>

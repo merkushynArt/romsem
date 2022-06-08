@@ -1,12 +1,14 @@
 import React from 'react';
 
-const PizzaSize = ({sizes}) => {
+const PizzaSize = ({item, setPizza}) => {
    return (
       <>
-         {sizes ?
+         {item.sizes ?
             <ul className='content__card-sizes'>
-               {sizes.map((size) => (
-                  <li className='content__card-size' key={size}>
+               {item.sizes.map((size, idx) => (
+                  <li className={`content__card-size ${item.size === idx ? 'active' : ''}`} key={size} onClick={() => {
+                     setPizza({...item, size:idx})
+                  }}>
                      {size}
                   </li>
                ))}
